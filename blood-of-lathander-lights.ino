@@ -9,10 +9,31 @@ CRGB leds[NUM_LEDS];
 const CHSV warmYellow = CHSV(35, 255, 255);
 const CRGB white = CRGB::White;
 
+uint8_t minBrightness = 100;
+uint8_t maxBrightness = 255;
+
+int warmYellowLoopsBeforeWhite = 3;
+
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   FastLED.clear();
   FastLED.show();
+}
+
+void fadeOutInWarmYellow(int led) {
+  // Fade out
+  for (int i = maxBrightness; i >= minBrightness; i--) {
+    leds[led] = CHSV(warmYellow.h, warmYellow.s, i);
+    FastLED.show();
+    delay(10);
+  }
+
+  // Fade in
+  for (int i = minBrightness; i <= maxBrightness; i++) {
+    leds[led] = CHSV(warmYellow.h, warmYellow.s, i);
+    FastLED.show();
+    delay(10);
+  }
 }
 
 void loop() {
@@ -22,24 +43,12 @@ void loop() {
 
   delay(1000);
 
-  uint8_t minBrightness = 100;
-  uint8_t maxBrightness = 255;
 
-  // Fade out
-  for (int i = maxBrightness; i >= minBrightness; i--) {
-    leds[0] = CHSV(warmYellow.h, warmYellow.s, i);
-    FastLED.show();
-    delay(10);
+
+  EVERY_N_MILLISECONDS(2000) {
+    fadeOutInWarmYellow(0);
+    fadeOutInWarmYellow(5);
   }
-
-  delay(500);
-
-  // Fade in
-  for (int i = minBrightness; i <= maxBrightness; i++) {
-    leds[0] = CHSV(warmYellow.h, warmYellow.s, i);
-    FastLED.show();
-    delay(10);
-  }
-
-  delay(500);
+  // for (int loop = 0; loop < warmYellowLoopsBeforeWhite; loop++){
+  // }
 }
