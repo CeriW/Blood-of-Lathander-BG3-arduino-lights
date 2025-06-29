@@ -9,15 +9,15 @@ struct RGB {
   uint8_t r;
   uint8_t g;
   uint8_t b;
-};         
+};
 RGB warmYellow = { 255, 125, 0 };
 RGB coolYellow = { 255, 175, 0 };
-RGB coolWhite = { 255, 255, 255 };
+RGB white = { 255, 255, 255 };
 
 int minBrightness = 50;
 int maxBrightness = 255;
-int interval = 50;
-int stepSize = 3;
+int interval = 80;
+int stepSize = 2;
 
 
 void setup() {
@@ -47,9 +47,16 @@ void loop() {
   // For all pixels...
   for (int i = 0; i < NUMPIXELS; i++) {
 
+    int randomWhiteLED1 = random(0, 6);
+    int randomWhiteLED2 = random(7, 12);
+
+
     // Go from min brightness to max brightness
     for (int brightness = minBrightness; brightness <= maxBrightness; brightness += stepSize) {
       setAllPixelsYellow();
+      pixels.setPixelColor(randomWhiteLED1, white.r, white.g, white.b);
+      pixels.setPixelColor(randomWhiteLED2, white.r, white.g, white.b);
+
       pixels.setBrightness(brightness);
       pixels.show();
       delay(interval);
@@ -57,11 +64,13 @@ void loop() {
 
     // Then go from max brightness to min brightness
     for (int brightness = maxBrightness; brightness > minBrightness; brightness -= stepSize) {
-      setAllPixelsYellow();
+      // setAllPixelsYellow();
       pixels.setBrightness(brightness);
       pixels.show();
       delay(interval);
     }
+
+    setAllPixelsYellow();
 
 
     // pixels.setPixelColor(i - 4, coolWhite.r, coolWhite.g, coolWhite.b);
