@@ -9,7 +9,7 @@ CRGB leds[NUM_LEDS];
 const CHSV warmYellow = CHSV(35, 255, 255);
 const CHSV white = CHSV(0, 0, 100);
 
-uint8_t minBrightness = 100;
+uint8_t minBrightness = 50
 uint8_t maxBrightness = 255;
 
 int warmYellowLoopsBeforeWhite = 2;
@@ -86,46 +86,58 @@ void loop() {
   FastLED.show();
 
   EVERY_N_MILLISECONDS(interval) {
-    int targetLED1 = random(0, NUM_LEDS /3);
-    int targetLED2 = random(NUM_LEDS / 3, NUM_LEDS / 3 * 2);
-    int targetLED3 = random(NUM_LEDS / 3 * 2, NUM_LEDS);
 
+    int whiteLED1 = random(0, NUM_LEDS /3);
+    int whiteLED2 = random(NUM_LEDS / 3, NUM_LEDS / 3 * 2);
+    int whiteLED3 = random(NUM_LEDS / 3 * 2, NUM_LEDS);
+
+
+    int dimLED1 = random(0, NUM_LEDS / 2);
+    int dimLED2 = random(NUM_LEDS / 2, NUM_LEDS);
     // yellowWhiteLoop(targetLEDs);
 
 
   for (int loop = 0; loop < warmYellowLoopsBeforeWhite - 1; loop++) {
     // For first few loops, go from mid brightness to max brightness and back again
-    fadeOut(targetLED1, warmYellow, maxBrightness, minBrightness);
-    fadeOut(targetLED2, warmYellow, maxBrightness, minBrightness);
-    fadeOut(targetLED3, warmYellow, maxBrightness, minBrightness);
+    fadeOut(whiteLED1, warmYellow, maxBrightness, minBrightness);
+    fadeOut(whiteLED2, warmYellow, maxBrightness, minBrightness);
+    fadeOut(whiteLED3, warmYellow, maxBrightness, minBrightness);
 
-    fadeIn(targetLED1, warmYellow, minBrightness, maxBrightness);
-    fadeIn(targetLED2, warmYellow, minBrightness, maxBrightness);
-    fadeIn(targetLED3, warmYellow, minBrightness, maxBrightness);
+    fadeIn(whiteLED1, warmYellow, minBrightness, maxBrightness);
+    fadeIn(whiteLED2, warmYellow, minBrightness, maxBrightness);
+    fadeIn(whiteLED3, warmYellow, minBrightness, maxBrightness);
   }
 
   // For the next loop we take the brightness all the way down to 0.
   // This means we don't get a jump between one colour and another.
-  fadeOut(targetLED1, warmYellow, maxBrightness, 0);
-  fadeOut(targetLED2, warmYellow, maxBrightness, 0);
-  fadeOut(targetLED3, warmYellow, maxBrightness, 0);
+  fadeOut(whiteLED1, warmYellow, maxBrightness, 0);
+  fadeOut(whiteLED2, warmYellow, maxBrightness, 0);
+  fadeOut(whiteLED3, warmYellow, maxBrightness, 0);
 
 
   // Now we fade in with white
-  fadeIn(targetLED1, white, 0, maxBrightness);
-  fadeIn(targetLED2, white, 0, maxBrightness);
-  fadeIn(targetLED3, white, 0, maxBrightness);
+  fadeIn(whiteLED1, white, 0, maxBrightness);
+  fadeIn(whiteLED2, white, 0, maxBrightness);
+  fadeIn(whiteLED3, white, 0, maxBrightness);
+
+  // Let's make the dim ones fade out a little
+  fadeOut(dimLED1, warmYellow, maxBrightness, minBrightness);
+  fadeOut(dimLED2, warmYellow, maxBrightness, minBrightness);
 
 
   // And make the white fade back to 0
-  fadeOut(targetLED1, white, maxBrightness, 0);
-  fadeOut(targetLED2, white, maxBrightness, 0);
-  fadeOut(targetLED3, white, maxBrightness, 0);
+  fadeOut(whiteLED1, white, maxBrightness, 0);
+  fadeOut(whiteLED2, white, maxBrightness, 0);
+  fadeOut(whiteLED3, white, maxBrightness, 0);
+
+  // Let's make the dim ones bright again
+  fadeIn(dimLED1, warmYellow, minBrightness, maxBrightness);
+  fadeIn(dimLED2, warmYellow, minBrightness, maxBrightness);
 
 
   // Now fade back in with yellow to minimum brightness so we can start the loop again
-  fadeIn(targetLED1, warmYellow, 0, maxBrightness);
-  fadeIn(targetLED2, warmYellow, 0, maxBrightness);
-  fadeIn(targetLED3, warmYellow, 0, maxBrightness);
+  fadeIn(whiteLED1, warmYellow, 0, maxBrightness);
+  fadeIn(whiteLED2, warmYellow, 0, maxBrightness);
+  fadeIn(whiteLED3, warmYellow, 0, maxBrightness);
   }
 }
