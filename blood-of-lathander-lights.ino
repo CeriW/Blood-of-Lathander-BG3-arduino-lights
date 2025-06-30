@@ -40,7 +40,7 @@ void fadeOut(int led, CHSV colour, int from, int to) {
   FastLED.show();
 }
 
-void fadeAllInOut(colour) {
+void fadeAllInOut(CHSV colour) {
   // Fade all LEDs in and out yellow for fun
   for (int i = 255; i > 50; i--) {
     fill_solid(leds, NUM_LEDS, CHSV(colour.h, colour.s, i));
@@ -58,9 +58,12 @@ void fadeAllInOut(colour) {
 
 void loop() {
 
-  fadeAllInOutYellow();
-  fadeAllInOutYellow();
-  fadeAllInOutYellow();
+
+  fadeAllInOut(warmYellow);
+  fadeAllInOut(warmYellow);
+  fadeAllInOut(warmYellow);
+
+
 
 
   int whiteLED1 = random(0, NUM_LEDS / 3);
