@@ -13,7 +13,7 @@ uint8_t minBrightness = 100;
 uint8_t maxBrightness = 255;
 
 int warmYellowLoopsBeforeWhite = 2;
-int interval = 2000;
+int interval = 1000;
 
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
@@ -58,6 +58,29 @@ void fadeOut(int led, CHSV colour, int from, int to) {
   }
 }
 
+void yellowWhiteLoop(int led) {
+  for (int loop = 0; loop < warmYellowLoopsBeforeWhite - 1; loop++) {
+    // For first few loops, go from mid brightness to max brightness and back again
+    // fadeInOut(0, warmYellow, minBrightness, maxBrightness, minBrightness);
+    fadeIn(led, warmYellow, minBrightness, maxBrightness);
+    delay(200);
+    fadeOut(led, warmYellow, maxBrightness, minBrightness);
+  }
+
+  // For the next loop we take the brightness all the way down to 0.
+  // This means we don't get a jump between one colour and another.
+  fadeOut(led, warmYellow, minBrightness, 0);
+
+  // Now we fade in with white
+  fadeIn(led, white, 0, maxBrightness);
+
+  // And make the white fade back to 0
+  fadeOut(led, white, maxBrightness, 0);
+
+  // Now fade back in with yellow to minimum brightness so we can start the loop again
+  fadeIn(led, warmYellow, 0, minBrightness);
+}
+
 // void completeFadeOut(int led, CHSV colour){
 //   for (int i = minBrightness; i > 0; i--){
 //     leds[led] = CHSV(colour.h, colour.s, i);
@@ -71,37 +94,39 @@ void loop() {
   // leds[0] = warmYellow;
   FastLED.show();
 
-  for (int loop = 0; loop < warmYellowLoopsBeforeWhite - 1; loop++) {
-    // For first few loops, go from mid brightness to max brightness and back again
-    // fadeInOut(0, warmYellow, minBrightness, maxBrightness, minBrightness);
-    fadeIn(0, warmYellow, minBrightness, maxBrightness);
-    delay(200);
-    fadeOut(0, warmYellow, maxBrightness, minBrightness);
+  EVERY_N_MILLISECONDS(interval){
+    int targetLED = random(0, NUM_LEDS);
+    yellowWhiteLoop(targetLED);
   }
 
-  // For the next loop we take the brightness all the way down to 0.
-  // This means we don't get a jump between one colour and another.
-  fadeOut(0, warmYellow, minBrightness, 0);
-  
-  // Now we fade in with white
-  fadeIn(0, white, 0, maxBrightness);
 
-  // And make the white fade back to 0
-  fadeOut(0, white, maxBrightness, 0);
+  // // Pick 3 random LEDs to be white.
+  // // One will be in the first half of the LEDs, the second in the second half
+  // int randomWhite1 = random(0, NUM_LEDS / 3);
+  // int randomWhite2 = random(NUM_LEDS / 3, (NUM_LEDS / 3) * 2);
+  // int randomWhite3 = random((NUM_LEDS / 3) * 2, NUM_LEDS);
 
-  // Now fade back in with yellow to minimum brightness so we can start the loop again
-  fadeIn(0, warmYellow, 0, minBrightness);
 
+
+  // for (int i = 0; i < NUM_LEDS; i++) {
+  //   if (i == randomWhite1 | i == randomWhite2 | i == randomWhite3) {
+
+  //   } else {
+  //     yellowWhiteLoop(i);
+  //   }
+  // }
+
+  // yellowWhiteLoop(0);
 
 
   // EVERY_N_MILLISECONDS(5000) {
 
 
-    // fadeInOut(0, white, )
+  // fadeInOut(0, white, )
 
-    // fadeInOut(0, warmYellow, 0, maxBrightness);
-    // fadeInOut(0, white, 0, maxBrightness);
-    // fadeInOut()
+  // fadeInOut(0, warmYellow, 0, maxBrightness);
+  // fadeInOut(0, white, 0, maxBrightness);
+  // fadeInOut()
   // }
   // for (int loop = 0; loop < warmYellowLoopsBeforeWhite; loop++){
   // }
