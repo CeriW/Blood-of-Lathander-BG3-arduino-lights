@@ -14,4 +14,4 @@ I've tried to make costumes light up before but found I really didn't get on wit
 
 I could totally ask ChatGPT to throw something together for me. However, as I cosplay competitively and have 3D printed the prop (which is less impressive than crafting it yourself), I decided I absolutely had to do the code, especially since I code for a living!
 
-
+I will add more to this readme as the project progresses and I reach a final conclusion.
