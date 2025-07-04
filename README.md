@@ -1,7 +1,7 @@
 # Blood of Lathander BG3 arduino lights
 
 ## About this project
-As well as being a programmer, I am also a cosplayer and at the time of writing I'm currently working on [Shadowheart from Baldur's Gate 3](https://bg3.wiki/wiki/File:Shadowheart_Unarmed_Model.webp). I was very fortunate to get a 3D printer as a combined birthday/Christmas present last year and have already 3D printed myself the legendary [the Blood of Lathander](https://bg3.wiki/wiki/File:Blood_of_Lathander_Quest.jpg) mace as a prop to go with it. After years of threatening to make a costume that lights up, I finally decided to do it.
+As well as being a programmer, I am also a cosplayer and at the time of writing I'm currently working on [Shadowheart from Baldur's Gate 3](https://bg3.wiki/wiki/File:Shadowheart_Unarmed_Model.webp). I was very fortunate to get a 3D printer as a combined birthday/Christmas present last year and have already 3D printed myself the legendary [Blood of Lathander](https://bg3.wiki/wiki/File:Blood_of_Lathander_Quest.jpg) mace as a prop to go with it. After years of threatening to make a costume that lights up, I finally decided to do it.
 
 I've tried to make costumes light up before but found I really didn't get on with the whole electronics thing. LEDs, resistors, capacitors, all the maths, my brain just refuses. However, these days all the cool kids are doing it with Arduino and pre-wired colour changing LEDs that you can code, so it's time for me to give electronics another chance.
 
