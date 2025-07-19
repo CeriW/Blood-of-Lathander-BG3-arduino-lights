@@ -1,14 +1,16 @@
 #include <FastLED.h>
 
 #define NUM_LEDS 13
-#define DATA_PIN 3
+#define DATA_PIN 9
 
 CRGB leds[NUM_LEDS];
 
 const CHSV warmYellow = CHSV(35, 255, 255);
 const CHSV white = CHSV(0, 0, 100);
 
-int dimBrightness = 50;
+int dimBrightness = 50; // The brightness for the dimmest point, from a max of 255
+int fadeSpeed = 2.5; // How fast the LEDs fade in and out. Higher numbers will be slower
+
 
 void setup() {
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
@@ -22,7 +24,7 @@ void fadeIn(int led, CHSV colour, int from, int to) {
   for (int i = from; i <= to; i++) {
     leds[led] = CHSV(colour.h, colour.s, i);
     FastLED.show();
-    delay(5);
+    delay(fadeSpeed);
   }
   // Ensure final brightness
   leds[led] = CHSV(colour.h, colour.s, to);
@@ -33,7 +35,7 @@ void fadeOut(int led, CHSV colour, int from, int to) {
   for (int i = from; i >= to; i--) {
     leds[led] = CHSV(colour.h, colour.s, i);
     FastLED.show();
-    delay(5);
+    delay(fadeSpeed);
   }
   // Ensure final brightness
   leds[led] = CHSV(colour.h, colour.s, to);
