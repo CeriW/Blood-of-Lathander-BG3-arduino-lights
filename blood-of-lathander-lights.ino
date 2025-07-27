@@ -1,7 +1,15 @@
 #include <FastLED.h>
 
-#define NUM_LEDS 13
+#define NUM_LEDS 16
 #define DATA_PIN 9
+
+// The number of LEDs that are in the spikes.
+// For my prop, there are 13 spikes, plus 3 more LEDs - 2 in the main sphere and one in the pummel.
+#define SPIKE_LEDS 13
+
+// The number of the LED that's in the pummel.
+// We'll do a separate animation for this.
+#define PUMMEL_LED 16
 
 CRGB leds[NUM_LEDS];
 
@@ -63,31 +71,31 @@ void loop() {
 
   fadeAllInOut(warmYellow);
   fadeAllInOut(warmYellow);
-  fadeAllInOut(warmYellow);
+  // fadeAllInOut(warmYellow);
 
 
 
 
-  int whiteLED1 = random(0, NUM_LEDS / 3);
-  int whiteLED2 = random(NUM_LEDS / 3, NUM_LEDS / 3 * 2);
-  int whiteLED3 = random(NUM_LEDS / 3 * 2, NUM_LEDS);
+  int whiteLED1 = random(0, SPIKE_LEDS / 3);
+  int whiteLED2 = random(SPIKE_LEDS / 3, SPIKE_LEDS / 3 * 2);
+  int whiteLED3 = random(SPIKE_LEDS / 3 * 2, SPIKE_LEDS);
 
   // Choose a random LED to dim which isn't one of the white ones
-  int dimLED1 = random(0, NUM_LEDS / 3);
+  int dimLED1 = random(0, SPIKE_LEDS / 3);
   while (dimLED1 == whiteLED1 || dimLED1 == whiteLED2 || dimLED1 == whiteLED3) {
-    dimLED1 = random(0, NUM_LEDS / 3);
+    dimLED1 = random(0, SPIKE_LEDS / 3);
   }
 
   // Choose another random LED to dim which isn't one of the white ones
-  int dimLED2 = random(NUM_LEDS / 3, NUM_LEDS / 3 * 2);
+  int dimLED2 = random(SPIKE_LEDS / 3, SPIKE_LEDS / 3 * 2);
   while (dimLED2 == whiteLED1 || dimLED2 == whiteLED2 || dimLED2 == whiteLED3 || dimLED2 == dimLED1) {
-    dimLED2 = random(NUM_LEDS / 3, NUM_LEDS / 3 * 2);
+    dimLED2 = random(SPIKE_LEDS / 3, SPIKE_LEDS / 3 * 2);
   }
 
   // Choose another random LED to dim which isn't one of the white ones
-  int dimLED3 = random(NUM_LEDS / 3 * 2, NUM_LEDS);
+  int dimLED3 = random(SPIKE_LEDS / 3 * 2, SPIKE_LEDS);
   while (dimLED3 == whiteLED1 || dimLED3 == whiteLED2 || dimLED3 == whiteLED3 || dimLED3 == dimLED1 || dimLED3 == dimLED2) {
-    dimLED3 = random(NUM_LEDS / 3 * 2, NUM_LEDS);
+    dimLED3 = random(SPIKE_LEDS / 3 * 2, SPIKE_LEDS);
   }
 
   fadeOut(whiteLED1, warmYellow, 255, dimBrightness);  // Keep our whiteLED1 yellow, but fade to nothing
@@ -116,6 +124,8 @@ void loop() {
   fadeIn(dimLED2, warmYellow, dimBrightness, 255);  // bring dim leds back to full brightness
   fadeIn(dimLED3, warmYellow, dimBrightness, 255);  // bring dim leds back to full brightness
 
+  fadeIn(PUMMEL_LED, warmYellow, dimBrightness, 255);
+
 
   // Current state:
   // dimLED1: max brightness
@@ -131,10 +141,13 @@ void loop() {
   fadeOut(dimLED1, warmYellow, 255, dimBrightness);  // dimLED1 dim again
   fadeOut(dimLED2, warmYellow, 255, dimBrightness);  // dimLED2 dim again
   fadeOut(dimLED3, warmYellow, 255, dimBrightness);  // dimLED3 dim again
+  fadeOut(PUMMEL_LED, warmYellow, 255, dimBrightness);
 
   fadeIn(dimLED1, warmYellow, dimBrightness, 255);  // bring dim leds back to full brightness
   fadeIn(dimLED2, warmYellow, dimBrightness, 255);  // bring dim leds back to full brightness
   fadeIn(dimLED3, warmYellow, dimBrightness, 255);  // bring dim leds back to full brightness
+  fadeIn(PUMMEL_LED, warmYellow, dimBrightness, 255);
+
 
 
   // Current state:
@@ -150,6 +163,7 @@ void loop() {
   fadeOut(whiteLED1, white, 255, dimBrightness);  // fade whiteLED1 to nothing
   fadeOut(whiteLED2, white, 255, dimBrightness);  // fade whiteLED2 to nothing
   fadeOut(whiteLED3, white, 255, dimBrightness);  // fade whiteLED2 to nothing
+  fadeOut(PUMMEL_LED, warmYellow, 255, dimBrightness);
 
   // Current state:
   // dimLED1: max brightness
@@ -164,6 +178,7 @@ void loop() {
   fadeIn(whiteLED1, warmYellow, dimBrightness, 255);
   fadeIn(whiteLED2, warmYellow, dimBrightness, 255);
   fadeIn(whiteLED3, warmYellow, dimBrightness, 255);
+  fadeIn(PUMMEL_LED, warmYellow, dimBrightness, 255);
 
   // Current state:
   // dimLED1: max brightness
