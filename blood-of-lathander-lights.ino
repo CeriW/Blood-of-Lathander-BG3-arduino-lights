@@ -16,7 +16,7 @@ const int PUMMEL_LED = 15;
 
 CRGB leds[NUM_LEDS];
 
-const CHSV warmYellow = CHSV(35, 255, 255);
+const CHSV warmYellow = CHSV(42, 255, 255);
 const CHSV white = CHSV(0, 0, 100);
 
 int dimBrightness = 50; // The brightness for the dimmest point, from a max of 255
@@ -80,7 +80,8 @@ void loop() {
   int whiteLED1 = UPPER_HEMISPHERE_SPIKES[random(0, 2)];
   int whiteLED2 = LOWER_HEMISPHERE_SPIKES[random(0, 2)];
   int whiteLED3 = UPPER_HEMISPHERE_SPIKES[random(2, 4)];
-  int whiteLED4 = UPPER_HEMISPHERE_SPIKES[random(2, 4)];
+  int whiteLED4 = LOWER_HEMISPHERE_SPIKES[random(2, 4)];
+
 
   // Choose a random LED to dim which isn't one of the white ones
   int dimLED1 = random(0, SPIKE_LEDS / 3);
