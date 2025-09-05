@@ -1,5 +1,7 @@
 # Blood of Lathander BG3 arduino lights
 
+[See it in action on Youtube](https://www.youtube.com/shorts/zHxYY-EACBM)
+
 [<img src="https://imgur.com/61Io7Xb.jpg" width=500/>](https://imgur.com/a/tQtlB1w)
 
 [<img src="https://imgur.com/SnlP3ev.jpg" width=500/>](https://imgur.com/SnlP3ev)
@@ -24,17 +26,23 @@ I could totally ask ChatGPT to throw something together for me. However, as I co
 
 Ultimately I was reasonably happy with how this all turned out. I found it quite challenging writing this code due to the strictly synchronous nature of the language behind it - if you tell an LED to be X colour for Y seconds, you cannot make other LEDs do other things in the meantime, which led to some interesting problem solving.
 
+To be honest I had a bit of a nightmare getting this whole thing to work. I managed to short out one of my chips, my soldering fell apart and had to be redone, the flimsy wires on my battery came out, nightmare. I HIGHLY recommend going to the official Adafruit forums if you need help as it is full of wonderful, helpful people. ChatGPT did help along the way but did lead me down some bad paths that ended up costing me money that I didn't need to spend.
+
 I entered the cosplay contest at the first convention I wore this costume to and I won! I had so many lovely comments about my costume and the weapon.
 
 ### Battery life
 
-- As described in the brief above, battery life was important. ChatGPT told me my LEDs should be able to run just fine for 8.5-9 hours based on the code and battery capacity I'd given it. Not one to take ChatGPT at its word, I charged my battery overnight and set the thing going one morning to see what would happen. I abandoned the test after 12 hours and it was still going strong.
+As described in the brief above, battery life was important. ChatGPT told me my LEDs should be able to run just fine for 8.5-9 hours based on the code and battery capacity I'd given it. Not one to take ChatGPT at its word, I charged my battery overnight and set the thing going one morning to see what would happen. I abandoned the test after 12 hours and it was still going strong.
+
+### Number of LEDs
+
+Following the battery test, I determined that I had battery capacity to spare so I put more LEDs inside, so I had 2 inside the main ball part and not attached to any particular spike, as well as making them be white a higher percentage of the time (which is brighter but consumes more battery). It still easily lasts a whole convention day. I originally briefed myself that I needed 13 LEDs, but endedd up with 16 which is great. I could probably get away with even more if I wanted.
 
 ## Want to make your own?
 
 I love to hear it! I've written some advice below.
 
-## Taking this to a convention
+### Taking this to a convention
 
 Please do be aware that different conventions have different rules about what "weapons" they will allow inside. Always make sure to check and even if you're allowed to take it in, be respectful and don't go swinging this around. Don't be the reason your convention stops allowing props like this inside.
 
