@@ -32,7 +32,7 @@ I entered the cosplay contest at the first convention I wore this costume to and
 
 ### Battery life
 
-As described in the brief above, battery life was important. ChatGPT told me my LEDs should be able to run just fine for 8.5-9 hours based on the code and battery capacity I'd given it. Not one to take ChatGPT at its word, I charged my battery overnight and set the thing going one morning to see what would happen. I abandoned the test after 12 hours and it was still going strong.
+As described in the brief above, battery life was important. ChatGPT told me my LEDs should be able to run just fine for 8.5-9 hours based on the code and battery capacity I'd given it. Not one to take ChatGPT at its word, I charged my battery overnight and set the thing going one morning to see what would happen. After 12 hours the LEDs were still going strong and I abandoned the test, satisfied.
 
 ### Number of LEDs
 
