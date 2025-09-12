@@ -53,7 +53,7 @@ Please do be aware that different conventions have different rules about what "w
 - An arduino chip capable of outputting 5V (important to note as most of them do 3.7V as standard) and taking a LiPo battery. I have an Adafruit RP2040 which may have been overkill for the purpose.
 - Individually addressable LEDs. The official term is "neopixels"
 - A high-ish capacity LiPo battery. You are unlikely to be able to find a USB power bank small enough to fit inside the weapon. I used a 3500mAh battery.
-- Soldering supplies, including wires (I started with 30AWG wire, which is discrete but a pain to work with. Some parts of my project use 22AWG which is a bit chunkier but sturdier and easier to work with).
+- Soldering supplies, including wires (I started with 30AWG wire, which is discreet but a pain to work with. Some parts of my project use 22AWG which is a bit chunkier but sturdier and easier to work with).
 - Various paints and primers to colour it all with.
 - I highly recommend including a switch in your circuit between your Arduino device and the LEDs so you can easily turn it off if the situation calls. Do be aware that your Arduino will draw a small amount of power from the battery even if the LEDs are off, so your battery will eventually be drained if you leave it plugged in. Fine on the day, but don't expect to come back to your prop a week later and find it still has power if you didn't disconnect the battery.
 
