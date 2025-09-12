@@ -36,7 +36,7 @@ As described in the brief above, battery life was important. ChatGPT told me my 
 
 ### Number of LEDs
 
-Following the battery test, I determined that I had battery capacity to spare so I put more LEDs inside, so I had 2 inside the main ball part and not attached to any particular spike, as well as making them be white a higher percentage of the time (which is brighter but consumes more battery). It still easily lasts a whole convention day. I originally briefed myself that I needed 13 LEDs, but endedd up with 16 which is great. I could probably get away with even more if I wanted.
+Following the battery test, I determined that I had battery capacity to spare so I put more LEDs inside, so I had 2 inside the main ball part and not attached to any particular spike, as well as making them be white a higher percentage of the time (which is brighter but consumes more battery). It still easily lasts a whole convention day. I originally briefed myself that I needed 13 LEDs, but ended up with 16 which is great. I could probably get away with even more if I wanted.
 
 ## Want to make your own?
 
