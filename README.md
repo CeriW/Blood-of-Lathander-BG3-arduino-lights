@@ -2,6 +2,8 @@
 
 [See it in action on Youtube](https://www.youtube.com/shorts/zHxYY-EACBM)
 
+[<img src="https://i.imgur.com/M8Szat3.jpeg" width=500/>](https://i.imgur.com/M8Szat3.jpeg)
+
 [<img src="https://imgur.com/61Io7Xb.jpg" width=500/>](https://imgur.com/a/tQtlB1w)
 
 [<img src="https://imgur.com/SnlP3ev.jpg" width=500/>](https://imgur.com/SnlP3ev)
